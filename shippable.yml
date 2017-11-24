@@ -9,12 +9,9 @@ git:
    submodules: false
    
 build:
-  pre_ci:
-    - echo "true"
-    
   pre_ci_boot:
     image_name: arm64v8/ubuntu
-    image_tag: 16.04
+    image_tag: 14.04
     pull: true
     
   ci:
@@ -22,9 +19,4 @@ build:
     - docker ps
     - docker build -t=test .
     - docker images
-  
-  post_ci:
-    - echo "done"
     
-  cache: true
-  
