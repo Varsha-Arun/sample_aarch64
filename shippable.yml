@@ -3,14 +3,18 @@ language: python
 # Version number
 python:
   - 2.7
+
     
 git:
    submodules: false
    
 build:
+  pre_ci:
+    - echo "true"
+    
   pre_ci_boot:
-    image_name: drydockaarch64/u16pyt
-    image_tag: master
+    image_name: arm64v8/ubuntu
+    image_tag: 16.04
     pull: true
     
   ci:
@@ -18,4 +22,9 @@ build:
     - docker ps
     - docker build -t=test .
     - docker images
+  
+  post_ci:
+    - echo "done"
     
+  cache: true
+  
